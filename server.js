@@ -7,8 +7,9 @@ const bodyParser = require('body-parser')
 app.use(bodyParser.json()) // req.body
 
 
-
-
+// dotenv
+require('dotenv').config()
+const Port = process.env.Port || 3000
 
 app.get('/chicken',function(req,res){
 res.send('thanks for ordering chicken')
@@ -26,7 +27,7 @@ const menuRouter = require('./routers/menuRouter')
 app.use('/menu',menuRouter)
 
 
-app.listen(3000,()=>{
+app.listen(Port,()=>{
   console.log('server on')
 })
 
