@@ -9,10 +9,7 @@ require('dotenv').config()
 
  const mongoUrl = process.env.onlineMongoUrl
 
-mongoose.connect(mongoUrl,{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-})
+mongoose.connect(mongoUrl)
 
 // moongose create default connection object which is responsible for all the interaction between node js and mongodb server
 //here this object named as db
