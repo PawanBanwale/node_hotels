@@ -4,9 +4,12 @@ const menuItem = require('../modals/Menu')
 
 router.get('/',async(req,res)=>{
 try{
+    console.log('Fetching menu items...');
     const data = await menuItem.find()
+    console.log('Menu items fetched:', data);
     res.status(200).json(data)
 }catch(err){
+    console.error('Error fetching menu items:', err);
     res.status(500).json({err:"Internal server error"})
 }    
 })

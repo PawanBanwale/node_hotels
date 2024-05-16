@@ -3,8 +3,23 @@ const app = express()
 const db = require('./db')
 
 const menuItem = require('./modals/Menu')
-const bodyParser = require('body-parser')
+
+const bodyParser = require('body-parser') // it convert the json (coming from req body) to object
 app.use(bodyParser.json()) // req.body
+
+// middleware function
+const logRequest = (req,res,next)=>{
+console.log(`[${new Date().toLocaleString()}] Request made to : ${req.originalUrl}`)
+next() // move to next task
+}
+app.use(logRequest)
+
+// authentication
+
+const passport = require('./autj')
+app.use(passport.initialize())
+
+const localAuth = passport.authenticate('local',{session:false})
 
 
 // dotenv
